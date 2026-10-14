@@ -1,14 +1,271 @@
 ---
+import { getImage } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
+import LiteYoutube from '../components/LiteYoutube.astro';
+import portfolio from '../content/portfolio.json';
+
+const zdrojeObrazku = import.meta.glob<{ default: ImageMetadata }>(
+  '../../assets-src/**/*.{jpg,jpeg,png}',
+  { eager: true }
+);
+
+const KATEGORIE = ['Vše', 'Půdorysy', 'Vizualizace', 'Virtual staging', 'Exteriéry', 'Matterport', 'Video'];
+
+const obrazky = await Promise.all(
+  portfolio
+    .filter((item) => item.typ === 'obrazek')
+    .map(async (item) => {
+      const klic = `../../assets-src/${item.soubor}`;
+      const modul = zdrojeObrazku[klic];
+      if (!modul) {
+        throw new Error(`Obrázek z portfolio.json nenalezen: ${item.soubor}`);
+      }
+      const thumb = await getImage({ src: modul.default, width: 500, format: 'webp' });
+      const full = await getImage({ src: modul.default, width: 2000, format: 'webp' });
+      return { ...item, thumbSrc: thumb.src, fullSrc: full.src };
+    })
+);
+
+const odkazy = portfolio.filter((item) => item.typ === 'odkaz');
+const videa = portfolio.filter((item) => item.typ === 'video');
 ---
 
 <Layout
   title="Portfolio – ukázky práce Revisual"
-  description="Ukázky půdorysů, vizualizací, Matterport skenů a videoprohlídek nemovitostí."
+  description="Ukázky půdorysů, vizualizací, virtual stagingu, exteriérů, Matterport skenů a videoprohlídek nemovitostí."
 >
   <Section>
     <h1>Portfolio</h1>
-    <p>Galerii s filtrem doplníme ve Fázi 4 po zpracování obrázků z assets-src/.</p>
+    <p class="lead">Ukázky naší práce pro realitní makléře. Filtrujte podle typu služby.</p>
+
+    <div class="filter" role="group" aria-label="Filtrovat portfolio podle kategorie">
+      {KATEGORIE.map((kat, i) => (
+        <button type="button" class="filter__btn" class:list={[{ 'is-active': i === 0 }]} data-filter={kat}>
+          {kat}
+        </button>
+      ))}
+    </div>
+
+    <p class="empty-state" hidden>V této kategorii zatím nemáme žádné ukázky, brzy přidáme.</p>
+
+    <div class="grid">
+      {obrazky.map((item) => (
+        <button
+          type="button"
+          class="portfolio-item"
+          data-kategorie={item.kategorie}
+          data-full={item.fullSrc}
+          data-alt={item.alt}
+        >
+          <img src={item.thumbSrc} alt={item.alt} loading="lazy" decoding="async" />
+        </button>
+      ))}
+
+      {odkazy.map((item) => (
+        <a
+          class="portfolio-item portfolio-item--link"
+          data-kategorie={item.kategorie}
+          href={item.odkaz}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span>{item.nazev}</span>
+          <span class="portfolio-item__hint">Otevřít ukázku →</span>
+        </a>
+      ))}
+
+      {videa.map((item) => (
+        <div class="portfolio-item portfolio-item--video" data-kategorie={item.kategorie}>
+          <LiteYoutube id={item.videoId!} title={item.nazev!} />
+        </div>
+      ))}
+    </div>
   </Section>
+
+  <dialog id="lightbox" class="lightbox">
+    <button type="button" class="lightbox__close" aria-label="Zavřít">✕</button>
+    <img id="lightbox-img" src="" alt="" />
+  </dialog>
 </Layout>
+
+<style>
+  .lead {
+    color: var(--color-text-muted);
+    max-width: 38rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-bottom: var(--space-md);
+  }
+
+  .filter__btn {
+    font-family: var(--font-body);
+    font-size: var(--fs-small);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    background: var(--color-bg);
+    color: var(--color-text);
+    cursor: pointer;
+  }
+
+  .filter__btn.is-active {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-accent-text);
+  }
+
+  .empty-state {
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .portfolio-item {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    padding: 0;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--color-surface);
+  }
+
+  .portfolio-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-fast);
+  }
+
+  .portfolio-item:hover img {
+    transform: scale(1.03);
+  }
+
+  .portfolio-item--link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-text);
+    padding: var(--space-md);
+    background: var(--color-dark-bg);
+    color: var(--color-on-dark);
+  }
+
+  .portfolio-item__hint {
+    font-size: var(--fs-small);
+    color: var(--color-accent);
+  }
+
+  .portfolio-item--video {
+    border: none;
+    padding: 0;
+    cursor: default;
+  }
+
+  .lightbox {
+    border: none;
+    padding: 0;
+    background: transparent;
+    max-width: min(90vw, 70rem);
+    max-height: 90vh;
+  }
+
+  .lightbox::backdrop {
+    background: rgba(17, 17, 17, 0.85);
+  }
+
+  .lightbox img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    object-fit: contain;
+  }
+
+  .lightbox__close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    border: none;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-size: 1.1rem;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  @media (min-width: 36rem) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter__btn');
+  const items = document.querySelectorAll<HTMLElement>('[data-kategorie]');
+  const emptyState = document.querySelector<HTMLElement>('.empty-state');
+
+  function applyFilter(filter: string) {
+    let visible = 0;
+    items.forEach((item) => {
+      const show = filter === 'Vše' || item.dataset.kategorie === filter;
+      item.style.display = show ? '' : 'none';
+      if (show) visible += 1;
+    });
+    if (emptyState) emptyState.hidden = visible > 0;
+  }
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      buttons.forEach((b) => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      applyFilter(btn.dataset.filter ?? 'Vše');
+    });
+  });
+
+  const lightbox = document.getElementById('lightbox') as HTMLDialogElement | null;
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement | null;
+
+  document.querySelectorAll<HTMLButtonElement>('.portfolio-item[data-full]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      if (!lightbox || !lightboxImg) return;
+      lightboxImg.src = btn.dataset.full ?? '';
+      lightboxImg.alt = btn.dataset.alt ?? '';
+      lightbox.showModal();
+    });
+  });
+
+  lightbox?.querySelector('.lightbox__close')?.addEventListener('click', () => lightbox.close());
+  lightbox?.addEventListener('click', (event) => {
+    if (event.target === lightbox) lightbox.close();
+  });
+</script>

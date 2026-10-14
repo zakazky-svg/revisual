@@ -1,0 +1,38 @@
+[
+  { "typ": "obrazek", "soubor": "exterier/moderni-bungalov-s-bazenem-01.jpg", "kategorie": "Exteriéry", "alt": "Moderní přízemní bungalov s bazénem, terasou a lehátky" },
+  { "typ": "obrazek", "soubor": "exterier/moderni-dvougaraz-ulice-01.jpg", "kategorie": "Exteriéry", "alt": "Moderní patrový rodinný dům s dvojgaráží, pohled z ulice" },
+  { "typ": "obrazek", "soubor": "exterier/rodinny-dum-zahrada-vecer-01.jpg", "kategorie": "Exteriéry", "alt": "Řadový dům s osvětlenou zahradou za soumraku" },
+  { "typ": "obrazek", "soubor": "exterier/dvojdomek-ulice-01.jpg", "kategorie": "Exteriéry", "alt": "Dvojdomek se dvěma garážemi, pohled z ulice" },
+  { "typ": "obrazek", "soubor": "exterier/moderni-dum-bazen-terasa-01.jpg", "kategorie": "Exteriéry", "alt": "Moderní dům s bazénem, pergolou a terasou" },
+  { "typ": "obrazek", "soubor": "exterier/moderni-dum-zapad-slunce-01.jpg", "kategorie": "Exteriéry", "alt": "Moderní kubický dům s garáží při západu slunce" },
+  { "typ": "obrazek", "soubor": "exterier/radove-domy-zapad-slunce-01.jpg", "kategorie": "Exteriéry", "alt": "Řadové domy s balkony při západu slunce" },
+  { "typ": "obrazek", "soubor": "exterier/bytovy-dum-ulice-01.jpg", "kategorie": "Exteriéry", "alt": "Bytový dům na rohu ulice při západu slunce" },
+  { "typ": "obrazek", "soubor": "exterier/rodinny-dum-sedlova-strecha-01.jpg", "kategorie": "Exteriéry", "alt": "Rodinný dům se sedlovou střechou a balkonem" },
+  { "typ": "obrazek", "soubor": "exterier/bungalov-kamenny-obklad-01.jpg", "kategorie": "Exteriéry", "alt": "Bungalov s kamenným obkladem vstupu a velkými okny" },
+  { "typ": "obrazek", "soubor": "exterier/drevodum-bazen-les-01.jpg", "kategorie": "Exteriéry", "alt": "Dřevěný dům s bazénem v lesním prostředí" },
+  { "typ": "obrazek", "soubor": "exterier/drevodum-terasa-kopce-01.jpg", "kategorie": "Exteriéry", "alt": "Dřevěný bungalov s terasou a výhledem do kopců" },
+  { "typ": "obrazek", "soubor": "exterier/dum-s-bazenem-letecky-pohled-01.jpg", "kategorie": "Exteriéry", "alt": "Letecký pohled na dům se střešní terasou a malým bazénem" },
+
+  { "typ": "obrazek", "soubor": "modelove/obyvaci-pokoj-podkrovi-01.jpg", "kategorie": "Vizualizace", "alt": "Obývací pokoj s jídelnou v podkroví se skosenými stěnami" },
+  { "typ": "obrazek", "soubor": "modelove/pracovna-01.jpg", "kategorie": "Vizualizace", "alt": "Pracovna s psacím stolem a knihovničkou" },
+  { "typ": "obrazek", "soubor": "modelove/obyvaci-pokoj-knihovna-01.jpg", "kategorie": "Vizualizace", "alt": "Obývací pokoj s velkou knihovnou a pracovním koutem" },
+  { "typ": "obrazek", "soubor": "modelove/obyvaci-pokoj-kuchyn-01.jpg", "kategorie": "Vizualizace", "alt": "Prostorný obývací pokoj s kuchyní a jídelnou" },
+  { "typ": "obrazek", "soubor": "modelove/koupelna-vana-pracka-01.jpg", "kategorie": "Vizualizace", "alt": "Koupelna s vanou, umyvadlem a pračkou" },
+  { "typ": "obrazek", "soubor": "modelove/kuchyn-jidelni-stul-01.jpg", "kategorie": "Vizualizace", "alt": "Kuchyně s mramorovým jídelním stolem" },
+  { "typ": "obrazek", "soubor": "modelove/detsky-pokoj-patrova-postel-01.jpg", "kategorie": "Vizualizace", "alt": "Dětský pokoj s patrovou postelí" },
+
+  { "typ": "obrazek", "soubor": "virtual-staging/loznice-zrcadlo-rostliny-01.jpg", "kategorie": "Virtual staging", "alt": "Zařízená ložnice s postelí, zrcadlem a rostlinami" },
+  { "typ": "obrazek", "soubor": "virtual-staging/obyvaci-pokoj-jidelna-01.jpg", "kategorie": "Virtual staging", "alt": "Zařízený obývací pokoj s jídelním stolem a výhledem do zahrady" },
+  { "typ": "obrazek", "soubor": "virtual-staging/kuchyn-jidelna-terasa-01.jpg", "kategorie": "Virtual staging", "alt": "Zařízená kuchyně s jídelnou a posezením" },
+  { "typ": "obrazek", "soubor": "virtual-staging/loznice-pracovna-01.jpg", "kategorie": "Virtual staging", "alt": "Zařízená ložnice s pracovním koutem" },
+  { "typ": "obrazek", "soubor": "virtual-staging/loznice-satni-skrin-01.jpg", "kategorie": "Virtual staging", "alt": "Zařízená ložnice s vestavěnou skříní" },
+  { "typ": "obrazek", "soubor": "virtual-staging/kuchyn-obyvaci-pokoj-terasa-01.jpg", "kategorie": "Virtual staging", "alt": "Zařízená kuchyně s obývacím pokojem a výstupem na terasu" },
+  { "typ": "obrazek", "soubor": "virtual-staging/koupelna-sprchovy-kout-01.jpg", "kategorie": "Virtual staging", "alt": "Zařízená koupelna se sprchovým koutem a dvojitým umyvadlem" },
+  { "typ": "obrazek", "soubor": "virtual-staging/loznice-mesto-vyhled-01.jpg", "kategorie": "Virtual staging", "alt": "Zařízená ložnice s výhledem na město" },
+
+  { "typ": "odkaz", "kategorie": "Matterport", "nazev": "Ukázková 3D prohlídka nemovitosti", "odkaz": "https://my.matterport.com/show/?m=Z5jFLC6EnK6" },
+
+  { "typ": "video", "kategorie": "Video", "videoId": "I34hUJpVgWc", "nazev": "Videoprohlídka nemovitosti" },
+  { "typ": "video", "kategorie": "Video", "videoId": "QSkKeQd8LTY", "nazev": "Videoprohlídka nemovitosti" },
+  { "typ": "video", "kategorie": "Video", "videoId": "KGVywRlp-iw", "nazev": "Videoprohlídka nemovitosti" }
+]
