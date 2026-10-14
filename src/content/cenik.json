@@ -1,0 +1,32 @@
+{
+  "pudorysyAVizualizace": {
+    "nazev": "Půdorysy a vizualizace",
+    "polozky": [
+      { "nazev": "Nevybavený půdorys s názvy místností a m²", "cena": "250 Kč / patro" },
+      { "nazev": "Vybavený 2D + 3D půdorys s legendou", "cena": "650 Kč / patro" },
+      { "nazev": "Karta bytu / vlastní styl legendy", "cena": "100 Kč / patro" },
+      { "nazev": "Vizualizace celé nemovitosti", "cena": "2 900 Kč (každé další patro 1 500 Kč)" },
+      { "nazev": "Exteriéry", "cena": "Cena dle rozsahu práce" }
+    ]
+  },
+  "matterport": {
+    "nazev": "Matterport",
+    "polozky": [
+      { "nazev": "do 50 m²", "cena": "2 100 Kč" },
+      { "nazev": "do 100 m²", "cena": "3 100 Kč" },
+      { "nazev": "do 150 m²", "cena": "4 100 Kč" },
+      { "nazev": "nad 150 m²", "cena": "Individuální cena" }
+    ]
+  },
+  "videoAFoceni": {
+    "nazev": "Videoprohlídka a focení",
+    "polozky": [
+      { "nazev": "Nafocení nemovitosti", "cena": "od 2 500 Kč / byt, RD" },
+      { "nazev": "Virtual staging", "cena": "800 Kč / snímek" },
+      { "nazev": "Videoprohlídka bez mluveného slova", "cena": "5 500 Kč" },
+      { "nazev": "Videoprohlídka s mluveným slovem v pozadí", "cena": "6 000 Kč" },
+      { "nazev": "Videoprohlídka mluvené s výstupem", "cena": "6 500 Kč" },
+      { "nazev": "Dron – foto + video", "cena": "2 500 Kč" }
+    ]
+  }
+}

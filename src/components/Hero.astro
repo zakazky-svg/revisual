@@ -1,0 +1,60 @@
+---
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+}
+
+const { eyebrow, title, subtitle } = Astro.props;
+---
+
+<div class="hero">
+  <div class="hero__content">
+    {eyebrow && <p class="hero__eyebrow">{eyebrow}</p>}
+    <h1>{title}</h1>
+    {subtitle && <p class="hero__subtitle">{subtitle}</p>}
+    <div class="hero__actions">
+      <slot name="actions" />
+    </div>
+  </div>
+  <div class="hero__visual">
+    <slot name="visual" />
+  </div>
+</div>
+
+<style>
+  .hero {
+    display: grid;
+    gap: var(--space-lg);
+    align-items: center;
+    padding-block: var(--space-lg) var(--space-xl);
+  }
+
+  .hero__eyebrow {
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: var(--fs-small);
+  }
+
+  .hero__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 38rem;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+
+  @media (min-width: 64rem) {
+    .hero {
+      grid-template-columns: 1fr 1fr;
+      padding-block: var(--space-xl) var(--space-2xl);
+    }
+  }
+</style>

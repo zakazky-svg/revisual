@@ -1,14 +1,251 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import Button from '../components/Button.astro';
+import Hero from '../components/Hero.astro';
+import PlaceholderImage from '../components/PlaceholderImage.astro';
+import PricingTable from '../components/PricingTable.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import LiteYoutube from '../components/LiteYoutube.astro';
+import cenik from '../content/cenik.json';
+import reference from '../content/reference.json';
+import faq from '../content/faq.json';
+import sluzby from '../content/sluzby.json';
+
+const duveraFirmy = [
+  'RE/MAX',
+  'Bidli',
+  'Reality Zavadil a partneři',
+  'Kaktus Reality',
+  'QARA',
+  'Saxa Real',
+  'ADHREAL',
+];
+
+const videa = [
+  { id: 'I34hUJpVgWc', title: 'Videoprohlídka nemovitosti' },
+  { id: 'QSkKeQd8LTY', title: 'Videoprohlídka nemovitosti' },
+  { id: 'KGVywRlp-iw', title: 'Videoprohlídka nemovitosti' },
+];
+
+const faqHome = faq.slice(0, 6);
+const portfolioNahled = [
+  'Půdorys',
+  'Vizualizace',
+  'Matterport',
+  'Exteriér',
+  'Virtual staging',
+  'Video',
+];
 ---
 
 <Layout
   title="Revisual – půdorysy, vizualizace a videoprohlídky pro makléře"
-  description="Kompletní vizuální prezentace nemovitostí z jedné ruky pro realitní makléře v Praze, Ostravě a celé ČR."
+  description="Kompletní vizuální prezentace nemovitostí z jedné ruky pro realitní makléře v Praze, Ostravě a celé ČR. Půdorysy, vizualizace, Matterport, video a focení."
 >
   <Section>
-    <h1>Úvod</h1>
-    <p>Obsah doplníme ve Fázi 2 podle ZADANI.md a OBSAH.md.</p>
+    <Hero
+      title="Půdorysy, vizualizace a videoprohlídky, které pomáhají makléřům prodávat."
+      subtitle="Kompletní vizuální prezentace nemovitostí z jedné ruky. Rychle, přehledně a za jasnou cenu."
+    >
+      <Fragment slot="actions">
+        <Button href="/kontakt/" variant="primary">Nezávazná poptávka</Button>
+        <Button href="/cenik/" variant="secondary">Zobrazit ceník</Button>
+      </Fragment>
+      <Fragment slot="visual">
+        <PlaceholderImage ratio="4 / 3" label="Hlavní vizuál doplníme ve Fázi 4" />
+      </Fragment>
+    </Hero>
+  </Section>
+
+  <Section background="surface">
+    <p class="trust-bar__label">Důvěřují nám realitní kanceláře</p>
+    <ul class="trust-bar">
+      {duveraFirmy.map((firma) => (
+        <li>{firma}</li>
+      ))}
+    </ul>
+  </Section>
+
+  <Section id="sluzby">
+    <h2>Služby</h2>
+    <div class="grid grid--services">
+      {sluzby.map((sluzba) => (
+        <Card title={sluzba.nazev} href={sluzba.odkaz}>
+          <Fragment slot="image">
+            <PlaceholderImage ratio="4 / 3" label={sluzba.nazev} />
+          </Fragment>
+          <p>{sluzba.popis}</p>
+        </Card>
+      ))}
+    </div>
+  </Section>
+
+  <Section background="surface">
+    <h2>Proč Revisual</h2>
+    <div class="grid grid--why">
+      <div>
+        <h3>Rychlé dodání</h3>
+        <p>Zakázky zvládáme rychle, v případě potřeby i expresně.</p>
+      </div>
+      <div>
+        <h3>Všechno z jedné ruky</h3>
+        <p>Půdorysy, vizualizace, Matterport, video, focení i dron.</p>
+      </div>
+      <div>
+        <h3>Jasné ceny</h3>
+        <p>Veřejný ceník bez překvapení.</p>
+      </div>
+      <div>
+        <h3>Snadná spolupráce</h3>
+        <p>Rychlá komunikace od zadání po předání, i na dálku.</p>
+      </div>
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Portfolio</h2>
+    <div class="grid grid--portfolio">
+      {portfolioNahled.map((label) => (
+        <PlaceholderImage ratio="1 / 1" label={label} />
+      ))}
+    </div>
+    <div class="section__cta">
+      <Button href="/portfolio/" variant="secondary">Zobrazit celé portfolio</Button>
+    </div>
+  </Section>
+
+  <Section background="surface">
+    <h2>Videoprohlídky</h2>
+    <div class="grid grid--videos">
+      {videa.map((video) => (
+        <LiteYoutube id={video.id} title={video.title} />
+      ))}
+    </div>
+  </Section>
+
+  <Section id="cenik">
+    <h2>Ceník</h2>
+    <div class="grid grid--pricing">
+      <PricingTable nazev={cenik.pudorysyAVizualizace.nazev} polozky={cenik.pudorysyAVizualizace.polozky} limit={3} />
+      <PricingTable nazev={cenik.matterport.nazev} polozky={cenik.matterport.polozky} />
+      <PricingTable nazev={cenik.videoAFoceni.nazev} polozky={cenik.videoAFoceni.polozky} limit={3} />
+    </div>
+    <div class="section__cta">
+      <Button href="/cenik/" variant="secondary">Zobrazit celý ceník</Button>
+    </div>
+  </Section>
+
+  <Section background="surface">
+    <h2>Reference</h2>
+    <div class="grid grid--references">
+      {reference.map((ref) => (
+        <blockquote class="reference-card">
+          <p>&bdquo;{ref.text}&ldquo;</p>
+          <footer>{ref.jmeno}, {ref.firma}</footer>
+        </blockquote>
+      ))}
+    </div>
+  </Section>
+
+  <Section>
+    <h2>Časté dotazy</h2>
+    <FaqAccordion items={faqHome} />
+  </Section>
+
+  <Section background="dark">
+    <div class="final-cta">
+      <h2>Chcete rychlou a profesionální prezentaci nemovitosti?</h2>
+      <p>Ozvěte se nám – zpracujeme nezávaznou poptávku a navrhneme nejlepší řešení.</p>
+      <Button href="/kontakt/" variant="primary">Nezávazná poptávka</Button>
+    </div>
   </Section>
 </Layout>
+
+<style>
+  .trust-bar__label {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: var(--fs-small);
+    margin-bottom: var(--space-md);
+  }
+
+  .trust-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-md) var(--space-lg);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    color: var(--color-text-muted);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .grid--services {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+
+  .grid--why {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+
+  .grid--portfolio {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--videos {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  }
+
+  .grid--pricing {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    align-items: start;
+  }
+
+  .grid--references {
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  }
+
+  .reference-card {
+    margin: 0;
+    padding: var(--space-md);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+  }
+
+  .reference-card footer {
+    margin-top: var(--space-sm);
+    font-weight: 600;
+    font-size: var(--fs-small);
+  }
+
+  .section__cta {
+    margin-top: var(--space-lg);
+    text-align: center;
+  }
+
+  .final-cta {
+    text-align: center;
+    max-width: 36rem;
+    margin-inline: auto;
+  }
+
+  .final-cta p {
+    color: #c8c8c8;
+    margin-bottom: var(--space-md);
+  }
+
+  @media (min-width: 36rem) {
+    .grid--portfolio {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

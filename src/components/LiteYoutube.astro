@@ -1,0 +1,80 @@
+---
+interface Props {
+  id: string;
+  title: string;
+}
+
+const { id, title } = Astro.props;
+---
+
+<div class="lite-youtube" data-video-id={id} role="button" tabindex="0" aria-label={`Přehrát video: ${title}`}>
+  <span class="lite-youtube__play" aria-hidden="true">▶</span>
+  <span class="lite-youtube__title">{title}</span>
+</div>
+
+<style>
+  .lite-youtube {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 16 / 9;
+    background: var(--color-dark-bg);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    overflow: hidden;
+  }
+
+  .lite-youtube__play {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-accent-text);
+    font-size: 1.25rem;
+  }
+
+  .lite-youtube__title {
+    position: absolute;
+    bottom: var(--space-sm);
+    left: var(--space-sm);
+    right: var(--space-sm);
+    color: var(--color-on-dark);
+    font-size: var(--fs-small);
+    font-weight: 600;
+  }
+
+  .lite-youtube iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.lite-youtube').forEach((el) => {
+    function play() {
+      const id = el.dataset.videoId;
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1`;
+      iframe.title = el.querySelector('.lite-youtube__title')?.textContent ?? 'YouTube video';
+      iframe.allow = 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      el.replaceChildren(iframe);
+    }
+
+    el.addEventListener('click', play);
+    el.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        play();
+      }
+    });
+  });
+</script>

@@ -1,0 +1,30 @@
+[
+  {
+    "otazka": "Jak rychle dodáte půdorys?",
+    "odpoved": "[DOPLNIT běžnou lhůtu]. Expresní zpracování je možné [DOPLNIT podmínky a příplatek]."
+  },
+  {
+    "otazka": "Jaké podklady potřebujete k půdorysu?",
+    "odpoved": "[DOPLNIT, např. zaměření, náčrt, fotky]"
+  },
+  {
+    "otazka": "Jaký je rozdíl mezi 2D a 3D půdorysem?",
+    "odpoved": "2D půdorys je přehledný plán s názvy místností a výměrami. 3D půdorys navíc ukazuje vybavení a rozložení prostoru."
+  },
+  {
+    "otazka": "Co je Matterport a k čemu je dobrý?",
+    "odpoved": "Matterport je 3D sken nemovitosti, po kterém se zájemce může virtuálně procházet z domova."
+  },
+  {
+    "otazka": "Kde působíte?",
+    "odpoved": "Působíme v Praze a v Ostravě, služby zajišťujeme pro celou ČR. [DOPLNIT podmínky dojezdu u focení a videa]"
+  },
+  {
+    "otazka": "Jak probíhá objednávka a platba?",
+    "odpoved": "[DOPLNIT]"
+  },
+  {
+    "otazka": "Zvládnete i zakázku mimo Ostravu a Prahu?",
+    "odpoved": "[DOPLNIT]"
+  }
+]

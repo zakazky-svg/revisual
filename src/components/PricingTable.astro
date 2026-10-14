@@ -1,0 +1,75 @@
+---
+interface Polozka {
+  nazev: string;
+  cena: string;
+}
+
+interface Props {
+  nazev: string;
+  polozky: Polozka[];
+  limit?: number;
+}
+
+const { nazev, polozky, limit } = Astro.props;
+const zobrazene = limit ? polozky.slice(0, limit) : polozky;
+const skryto = limit ? Math.max(polozky.length - limit, 0) : 0;
+---
+
+<div class="pricing-table">
+  <h3>{nazev}</h3>
+  <table>
+    <tbody>
+      {zobrazene.map((polozka) => (
+        <tr>
+          <th scope="row">{polozka.nazev}</th>
+          <td>{polozka.cena}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  {skryto > 0 && <p class="pricing-table__more">a dalších {skryto} položek v ceníku</p>}
+</div>
+
+<style>
+  .pricing-table {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+  }
+
+  .pricing-table h3 {
+    margin-bottom: var(--space-sm);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th,
+  td {
+    text-align: left;
+    font-weight: 400;
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: var(--fs-small);
+  }
+
+  tr:last-child th,
+  tr:last-child td {
+    border-bottom: none;
+  }
+
+  td {
+    text-align: right;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .pricing-table__more {
+    margin: var(--space-sm) 0 0;
+    font-size: var(--fs-small);
+    color: var(--color-text-muted);
+  }
+</style>

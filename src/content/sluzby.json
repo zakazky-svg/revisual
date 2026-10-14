@@ -1,0 +1,44 @@
+[
+  {
+    "klic": "pudorysy-2d",
+    "nazev": "2D půdorysy",
+    "popis": "Přehledné půdorysy s názvy místností a výměrami pro snadnou orientaci v prostoru.",
+    "odkaz": "/pudorysy-a-vizualizace/"
+  },
+  {
+    "klic": "pudorysy-3d",
+    "nazev": "3D půdorysy",
+    "popis": "Vybavené 3D půdorysy, které ukážou rozložení bytu nebo domu na první pohled.",
+    "odkaz": "/pudorysy-a-vizualizace/"
+  },
+  {
+    "klic": "vizualizace",
+    "nazev": "Vizualizace",
+    "popis": "Fotorealistické vizualizace a virtual staging, díky kterým si zájemci představí potenciál prostoru.",
+    "odkaz": "/pudorysy-a-vizualizace/"
+  },
+  {
+    "klic": "exteriery",
+    "nazev": "Exteriéry",
+    "popis": "Vizualizace venkovních prostor a okolí nemovitosti.",
+    "odkaz": "/pudorysy-a-vizualizace/"
+  },
+  {
+    "klic": "foceni",
+    "nazev": "Focení nemovitostí",
+    "popis": "Širokoúhlé snímky se správným světlem a korekcí perspektivy, aby prostor působil vzdušně a realisticky.",
+    "odkaz": "/foceni-a-dron/"
+  },
+  {
+    "klic": "videoprohlidky",
+    "nazev": "Videoprohlídky",
+    "popis": "Dynamická videa, která nemovitost představí v nejlepším světle.",
+    "odkaz": "/videoprohlidky/"
+  },
+  {
+    "klic": "matterport",
+    "nazev": "Matterport",
+    "popis": "3D virtuální prohlídka, ve které se zájemce může po nemovitosti sám „projít“.",
+    "odkaz": "/matterport/"
+  }
+]
