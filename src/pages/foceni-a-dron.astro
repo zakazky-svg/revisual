@@ -7,11 +7,13 @@ import PricingTable from '../components/PricingTable.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 import cenik from '../content/cenik.json';
 import faq from '../content/faq.json';
+import { faqPageJsonLd } from '../lib/seo';
 
 const foceniPolozky = cenik.videoAFoceni.polozky.filter((p) =>
   ['Nafocení nemovitosti', 'Dron – foto + video'].includes(p.nazev)
 );
 const faqStranky = faq.filter((item) => item.kategorie.includes('foceni-a-dron'));
+const faqJsonLd = faqPageJsonLd(faqStranky);
 
 const ukazky = ['Interiér', 'Exteriér', 'Dron'];
 ---
@@ -20,12 +22,15 @@ const ukazky = ['Interiér', 'Exteriér', 'Dron'];
   title="Focení nemovitostí a dron – Ostrava, Praha, ČR"
   description="Profesionální focení nemovitostí a letecké záběry z dronu pro realitní makléře v Praze, Ostravě a celé ČR."
 >
+  {faqJsonLd && <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />}
+
   <Section>
     <h1>Focení nemovitostí a dron – Ostrava, Praha a celá ČR</h1>
     <p class="lead">
       Nafotíme nemovitost širokoúhlými snímky se správným světlem a korekcí perspektivy, volitelně
       doplníme o letecké záběry z dronu.
     </p>
+    <p class="locality">Působíme v Ostravě, Praze a po celé ČR.</p>
     <Button href="/kontakt/" variant="primary">Nezávazná poptávka</Button>
   </Section>
 
@@ -77,6 +82,11 @@ const ukazky = ['Interiér', 'Exteriér', 'Dron'];
     font-size: 1.125rem;
     color: var(--color-text-muted);
     max-width: 42rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .locality {
+    font-weight: 600;
     margin-bottom: var(--space-md);
   }
 

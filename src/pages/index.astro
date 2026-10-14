@@ -12,6 +12,7 @@ import cenik from '../content/cenik.json';
 import reference from '../content/reference.json';
 import faq from '../content/faq.json';
 import sluzby from '../content/sluzby.json';
+import { faqPageJsonLd } from '../lib/seo';
 
 const duveraFirmy = [
   'RE/MAX',
@@ -30,6 +31,7 @@ const videa = [
 ];
 
 const faqHome = faq.filter((item) => item.kategorie.includes('domov')).slice(0, 6);
+const faqJsonLd = faqPageJsonLd(faqHome);
 const portfolioNahled = [
   'Půdorys',
   'Vizualizace',
@@ -44,6 +46,8 @@ const portfolioNahled = [
   title="Revisual – půdorysy, vizualizace a videoprohlídky pro makléře"
   description="Kompletní vizuální prezentace nemovitostí z jedné ruky pro realitní makléře v Praze, Ostravě a celé ČR. Půdorysy, vizualizace, Matterport, video a focení."
 >
+  {faqJsonLd && <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />}
+
   <Section>
     <Hero
       title="Půdorysy, vizualizace a videoprohlídky, které pomáhají makléřům prodávat."
@@ -54,7 +58,7 @@ const portfolioNahled = [
         <Button href="/cenik/" variant="secondary">Zobrazit ceník</Button>
       </Fragment>
       <Fragment slot="visual">
-        <PlaceholderImage ratio="4 / 3" label="Hlavní vizuál doplníme ve Fázi 4" />
+        <PlaceholderImage ratio="4 / 3" label="Hlavní vizuál zatím nemáme" />
       </Fragment>
     </Hero>
   </Section>

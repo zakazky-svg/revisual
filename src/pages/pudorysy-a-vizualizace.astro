@@ -7,9 +7,11 @@ import PricingTable from '../components/PricingTable.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 import cenik from '../content/cenik.json';
 import faq from '../content/faq.json';
+import { faqPageJsonLd } from '../lib/seo';
 
 const virtualStaging = cenik.videoAFoceni.polozky.filter((p) => p.nazev === 'Virtual staging');
 const faqStranky = faq.filter((item) => item.kategorie.includes('pudorysy-a-vizualizace'));
+const faqJsonLd = faqPageJsonLd(faqStranky);
 
 const ukazky = ['2D půdorys', '3D půdorys', 'Vizualizace', 'Virtual staging', 'Exteriér'];
 ---
@@ -18,12 +20,15 @@ const ukazky = ['2D půdorys', '3D půdorys', 'Vizualizace', 'Virtual staging', 
   title="Půdorysy a vizualizace nemovitostí – Ostrava, Praha, ČR"
   description="2D a 3D půdorysy, fotorealistické vizualizace a virtual staging pro realitní makléře. Rychle, profesionálně, s jasným ceníkem."
 >
+  {faqJsonLd && <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />}
+
   <Section>
     <h1>Půdorysy a vizualizace nemovitostí – Ostrava, Praha a celá ČR</h1>
     <p class="lead">
       Připravíme přehledné 2D a 3D půdorysy, fotorealistické vizualizace i virtual staging, díky kterým
       zájemci pochopí dispozici a potenciál nemovitosti ještě před prohlídkou.
     </p>
+    <p class="locality">Působíme v Ostravě, Praze a po celé ČR.</p>
     <Button href="/kontakt/" variant="primary">Nezávazná poptávka</Button>
   </Section>
 
@@ -77,6 +82,11 @@ const ukazky = ['2D půdorys', '3D půdorys', 'Vizualizace', 'Virtual staging', 
     font-size: 1.125rem;
     color: var(--color-text-muted);
     max-width: 42rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .locality {
+    font-weight: 600;
     margin-bottom: var(--space-md);
   }
 

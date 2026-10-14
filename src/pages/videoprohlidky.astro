@@ -7,9 +7,11 @@ import PricingTable from '../components/PricingTable.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 import cenik from '../content/cenik.json';
 import faq from '../content/faq.json';
+import { faqPageJsonLd } from '../lib/seo';
 
 const videoPolozky = cenik.videoAFoceni.polozky.filter((p) => p.nazev.startsWith('Videoprohlídka'));
 const faqStranky = faq.filter((item) => item.kategorie.includes('videoprohlidky'));
+const faqJsonLd = faqPageJsonLd(faqStranky);
 
 const videa = [
   { id: 'I34hUJpVgWc', title: 'Videoprohlídka nemovitosti' },
@@ -22,12 +24,15 @@ const videa = [
   title="Videoprohlídky nemovitostí – Ostrava, Praha, ČR"
   description="Profesionální videoprohlídky bytů a domů pro realitní makléře. Tři varianty zpracování, jasný ceník, rychlé dodání."
 >
+  {faqJsonLd && <script slot="head" type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />}
+
   <Section>
     <h1>Videoprohlídky nemovitostí – Ostrava, Praha a celá ČR</h1>
     <p class="lead">
       Natočíme dynamickou videoprohlídku, která nemovitost představí v nejlepším světle a zaujme zájemce
       dřív, než dorazí na místo.
     </p>
+    <p class="locality">Působíme v Ostravě, Praze a po celé ČR.</p>
     <Button href="/kontakt/" variant="primary">Nezávazná poptávka</Button>
   </Section>
 
@@ -79,6 +84,11 @@ const videa = [
     font-size: 1.125rem;
     color: var(--color-text-muted);
     max-width: 42rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .locality {
+    font-weight: 600;
     margin-bottom: var(--space-md);
   }
 

@@ -13,6 +13,22 @@ interface Props {
 
 const { title, description, ogImage = '/og-image.jpg' } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+
+const professionalService = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Revisual',
+  url: 'https://revisual.cz',
+  telephone: '+420732860641',
+  email: 'zakazky@revisual.cz',
+  taxID: '17632871',
+  sameAs: ['https://www.instagram.com/revisual.cz/'],
+  areaServed: [
+    { '@type': 'City', name: 'Praha' },
+    { '@type': 'City', name: 'Ostrava' },
+    { '@type': 'Country', name: 'Česká republika' },
+  ],
+};
 ---
 
 <!doctype html>
@@ -32,6 +48,9 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={new URL(ogImage, Astro.site)} />
     <meta property="og:locale" content="cs_CZ" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(professionalService)} />
+    <slot name="head" />
   </head>
   <body>
     <a href="#main-content" class="skip-link">Přejít na obsah</a>
