@@ -1,0 +1,51 @@
+<div class="mobile-cta">
+  <a href="tel:+420732860641" class="mobile-cta__call" aria-label="Zavolat +420 732 860 641">
+    <span aria-hidden="true">☎</span>
+    <span>Zavolat</span>
+  </a>
+  <a href="/kontakt/" class="mobile-cta__demand">Nezávazná poptávka</a>
+</div>
+
+<style>
+  .mobile-cta {
+    display: flex;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90;
+    height: var(--mobile-cta-height);
+    padding-bottom: env(safe-area-inset-bottom, 0);
+    background: var(--color-bg);
+    border-top: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+  }
+
+  .mobile-cta__call,
+  .mobile-cta__demand {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .mobile-cta__call {
+    color: var(--color-text);
+    flex: 0 0 35%;
+    border-right: 1px solid var(--color-border);
+  }
+
+  .mobile-cta__demand {
+    background: var(--color-accent);
+    color: var(--color-accent-text);
+  }
+
+  @media (min-width: 64rem) {
+    .mobile-cta {
+      display: none;
+    }
+  }
+</style>

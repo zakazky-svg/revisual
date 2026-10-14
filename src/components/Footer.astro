@@ -1,0 +1,135 @@
+---
+import { Image } from 'astro:assets';
+import logoBile from '../../assets/brand/logo-bile.png';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__grid">
+    <div class="site-footer__brand">
+      <Image src={logoBile} alt="Revisual" width={64} height={64} />
+      <p>Půdorysy, vizualizace, Matterport, videoprohlídky a focení nemovitostí pro realitní makléře. Praha, Ostrava a celá ČR.</p>
+    </div>
+
+    <nav aria-label="Služby">
+      <h2>Služby</h2>
+      <ul>
+        <li><a href="/pudorysy-a-vizualizace/">Půdorysy a vizualizace</a></li>
+        <li><a href="/matterport/">Matterport</a></li>
+        <li><a href="/videoprohlidky/">Videoprohlídky</a></li>
+        <li><a href="/foceni-a-dron/">Focení a dron</a></li>
+        <li><a href="/portfolio/">Portfolio</a></li>
+        <li><a href="/cenik/">Ceník</a></li>
+      </ul>
+    </nav>
+
+    <div class="site-footer__contact">
+      <h2>Kontakt</h2>
+      <ul>
+        <li><a href="tel:+420732860641">Alexandr Skýba: +420 732 860 641</a></li>
+        <li><a href="tel:+420737692051">Daniel Kresila: +420 737 692 051</a></li>
+        <li><a href="mailto:zakazky@revisual.cz">zakazky@revisual.cz</a></li>
+        <li><a href="https://www.instagram.com/revisual.cz/" target="_blank" rel="noopener noreferrer">Instagram @revisual.cz</a></li>
+        <li><a href="https://g.page/r/Ccjq-IfmJGKGEAE/review" target="_blank" rel="noopener noreferrer">Google recenze</a></li>
+      </ul>
+      <p class="site-footer__ico">IČO: 17632871</p>
+    </div>
+  </div>
+
+  <div class="container site-footer__bottom">
+    <p>&copy; {year} Revisual</p>
+    <div class="site-footer__legal">
+      <a href="/ochrana-osobnich-udaju/">Ochrana osobních údajů</a>
+      <button type="button" data-action="open-cookie-settings">Nastavení cookies</button>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-dark-bg);
+    color: var(--color-on-dark);
+    padding-block: var(--space-xl) var(--space-lg);
+  }
+
+  .site-footer__grid {
+    display: grid;
+    gap: var(--space-lg);
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer h2 {
+    color: var(--color-on-dark);
+    font-size: var(--fs-small);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-sm);
+  }
+
+  .site-footer__brand p {
+    color: #c8c8c8;
+    max-width: 24rem;
+  }
+
+  .site-footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .site-footer a {
+    color: #e6e6e3;
+    text-decoration: none;
+  }
+
+  .site-footer a:hover {
+    text-decoration: underline;
+  }
+
+  .site-footer__ico {
+    color: #c8c8c8;
+    margin-top: var(--space-sm);
+  }
+
+  .site-footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    color: #c8c8c8;
+    font-size: var(--fs-small);
+  }
+
+  .site-footer__bottom p {
+    margin: 0;
+  }
+
+  .site-footer__legal {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  .site-footer__legal button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #e6e6e3;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+  }
+
+  @media (min-width: 48rem) {
+    .site-footer__grid {
+      grid-template-columns: 1.5fr 1fr 1fr;
+    }
+  }
+</style>

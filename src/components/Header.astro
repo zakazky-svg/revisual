@@ -1,0 +1,258 @@
+---
+import { Image } from 'astro:assets';
+import Button from './Button.astro';
+import logoCerne from '../../assets/brand/logo-cerne.png';
+
+const services = [
+  { href: '/pudorysy-a-vizualizace/', label: 'Půdorysy a vizualizace' },
+  { href: '/matterport/', label: 'Matterport' },
+  { href: '/videoprohlidky/', label: 'Videoprohlídky' },
+  { href: '/foceni-a-dron/', label: 'Focení a dron' },
+];
+
+const navLinks = [
+  { href: '/portfolio/', label: 'Portfolio' },
+  { href: '/cenik/', label: 'Ceník' },
+  { href: '/o-nas/', label: 'O nás' },
+  { href: '/kontakt/', label: 'Kontakt' },
+];
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href="/" class="site-header__logo">
+      <Image src={logoCerne} alt="Revisual" width={52} height={52} loading="eager" />
+      <span class="visually-hidden">Revisual – úvodní stránka</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Hlavní navigace">
+      <ul>
+        <li>
+          <details class="has-submenu">
+            <summary>Služby</summary>
+            <ul class="submenu">
+              {services.map((item) => (
+                <li><a href={item.href}>{item.label}</a></li>
+              ))}
+            </ul>
+          </details>
+        </li>
+        {navLinks.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="site-header__cta">
+      <Button href="/kontakt/" variant="primary">Nezávazná poptávka</Button>
+    </div>
+
+    <details class="nav-mobile">
+      <summary aria-label="Otevřít menu">
+        <span class="nav-mobile__icon" aria-hidden="true"></span>
+      </summary>
+      <nav aria-label="Mobilní navigace">
+        <ul>
+          <li>
+            <details class="has-submenu">
+              <summary>Služby</summary>
+              <ul class="submenu">
+                {services.map((item) => (
+                  <li><a href={item.href}>{item.label}</a></li>
+                ))}
+              </ul>
+            </details>
+          </li>
+          {navLinks.map((item) => (
+            <li><a href={item.href}>{item.label}</a></li>
+          ))}
+        </ul>
+        <Button href="/kontakt/" variant="primary" class="nav-mobile__cta">Nezávazná poptávka</Button>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    height: var(--header-height);
+  }
+
+  .site-header__logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .site-header__logo img {
+    display: block;
+  }
+
+  .nav-desktop {
+    display: none;
+    margin-right: auto;
+  }
+
+  .nav-desktop > ul {
+    display: flex;
+    gap: var(--space-md);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-desktop > ul > li {
+    position: relative;
+  }
+
+  .nav-desktop a,
+  .nav-desktop summary {
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--color-text);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .nav-desktop summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .has-submenu .submenu {
+    list-style: none;
+    margin: 0;
+    padding: var(--space-xs);
+    position: absolute;
+    top: calc(100% + var(--space-xs));
+    left: 0;
+    min-width: 14rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+  }
+
+  .has-submenu .submenu li a {
+    display: block;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--radius-sm);
+  }
+
+  .has-submenu .submenu li a:hover {
+    background: var(--color-surface);
+  }
+
+  .site-header__cta {
+    display: none;
+  }
+
+  .nav-mobile {
+    margin-left: auto;
+  }
+
+  .nav-mobile summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    cursor: pointer;
+  }
+
+  .nav-mobile summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .nav-mobile__icon,
+  .nav-mobile__icon::before,
+  .nav-mobile__icon::after {
+    display: block;
+    width: 1.5rem;
+    height: 2px;
+    background: var(--color-text);
+    border-radius: 1px;
+  }
+
+  .nav-mobile__icon::before {
+    content: '';
+    margin-bottom: 5px;
+  }
+
+  .nav-mobile__icon::after {
+    content: '';
+    margin-top: 5px;
+  }
+
+  .nav-mobile > nav {
+    position: fixed;
+    inset: var(--header-height) 0 0 0;
+    background: var(--color-bg);
+    padding: var(--space-md);
+    overflow-y: auto;
+  }
+
+  .nav-mobile nav > ul {
+    list-style: none;
+    margin: 0 0 var(--space-md);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .nav-mobile nav a,
+  .nav-mobile nav summary {
+    display: block;
+    padding: var(--space-sm) 0;
+    font-size: var(--fs-h3);
+    text-decoration: none;
+    color: var(--color-text);
+    cursor: pointer;
+  }
+
+  .nav-mobile .has-submenu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .nav-mobile .submenu {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 var(--space-md);
+  }
+
+  .nav-mobile .submenu a {
+    font-size: var(--fs-body);
+    padding: var(--space-xs) 0;
+  }
+
+  .nav-mobile__cta {
+    width: 100%;
+  }
+
+  @media (min-width: 64rem) {
+    .nav-desktop {
+      display: block;
+    }
+
+    .site-header__cta {
+      display: block;
+      margin-left: var(--space-sm);
+    }
+
+    .nav-mobile {
+      display: none;
+    }
+  }
+</style>

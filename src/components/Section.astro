@@ -1,0 +1,30 @@
+---
+interface Props {
+  background?: 'default' | 'surface' | 'dark';
+  id?: string;
+  class?: string;
+}
+
+const { background = 'default', id, class: className } = Astro.props;
+---
+
+<section id={id} class:list={['section', `section--${background}`, className]}>
+  <div class="container">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section {
+    padding-block: var(--space-xl);
+  }
+
+  .section--surface {
+    background: var(--color-surface);
+  }
+
+  .section--dark {
+    background: var(--color-dark-bg);
+    color: var(--color-on-dark);
+  }
+</style>

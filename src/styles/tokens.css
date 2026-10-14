@@ -1,0 +1,58 @@
+:root {
+  /* Barvy */
+  --color-text: #111111;
+  --color-bg: #ffffff;
+  --color-surface: #f5f5f3;
+  --color-border: #e6e6e3;
+  --color-text-muted: #5b5b5b;
+  --color-accent: #fbb02e;
+  --color-accent-text: #111111;
+  --color-on-dark: #ffffff;
+  --color-dark-bg: #111111;
+
+  /* Typografie */
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --fs-h1: clamp(2rem, 1.4rem + 2.5vw, 3.25rem);
+  --fs-h2: clamp(1.5rem, 1.2rem + 1.3vw, 2.25rem);
+  --fs-h3: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+
+  /* Odstupy */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+
+  /* Rozměry layoutu */
+  --container-max: 75rem;
+  --container-padding: 1.25rem;
+
+  /* Zaoblení a stíny (střídmě) */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.625rem;
+  --shadow-sm: 0 1px 2px rgba(17, 17, 17, 0.06);
+  --shadow-md: 0 4px 16px rgba(17, 17, 17, 0.08);
+
+  /* Breakpointy (pro referenci v médii dotazech) */
+  --bp-sm: 36rem;
+  --bp-md: 48rem;
+  --bp-lg: 64rem;
+
+  /* Přechody */
+  --transition-fast: 150ms ease;
+
+  /* Lepivé mobilní prvky */
+  --mobile-cta-height: 4.75rem;
+  --header-height: 4.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0ms;
+  }
+}

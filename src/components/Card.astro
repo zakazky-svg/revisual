@@ -1,0 +1,60 @@
+---
+interface Props {
+  title: string;
+  href?: string;
+  class?: string;
+}
+
+const { title, href, class: className } = Astro.props;
+const Tag = href ? 'a' : 'div';
+---
+
+<Tag href={href} class:list={['card', className]}>
+  {Astro.slots.has('image') && (
+    <div class="card__image">
+      <slot name="image" />
+    </div>
+  )}
+  <div class="card__body">
+    <h3 class="card__title">{title}</h3>
+    <slot />
+  </div>
+</Tag>
+
+<style>
+  .card {
+    display: block;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+  }
+
+  a.card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+
+  .card__image {
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+  }
+
+  .card__image :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .card__body {
+    padding: var(--space-md);
+  }
+
+  .card__title {
+    font-size: var(--fs-h3);
+    margin-bottom: var(--space-xs);
+  }
+</style>
