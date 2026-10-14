@@ -1,14 +1,101 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
+import Button from '../components/Button.astro';
+import PlaceholderImage from '../components/PlaceholderImage.astro';
+import PricingTable from '../components/PricingTable.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import cenik from '../content/cenik.json';
+import faq from '../content/faq.json';
+
+const faqStranky = faq.filter((item) => item.kategorie.includes('matterport'));
 ---
 
 <Layout
   title="Matterport – 3D virtuální prohlídky nemovitostí"
-  description="3D skeny Matterport pro realitní makléře. [DOPLNIT finální text]"
+  description="3D skeny Matterport pro realitní makléře v Praze, Ostravě a celé ČR. Zájemci si nemovitost prohlédnou virtuálně z domova."
 >
   <Section>
-    <h1>Matterport</h1>
-    <p>Obsah doplníme ve Fázi 3 podle ZADANI.md a OBSAH.md.</p>
+    <h1>Matterport – 3D virtuální prohlídky nemovitostí</h1>
+    <p class="lead">
+      Matterport sken umožní zájemcům „projít“ se nemovitostí virtuálně z domova, ještě než se rozhodnou
+      pro osobní prohlídku.
+    </p>
+    <Button href="/kontakt/" variant="primary">Nezávazná poptávka</Button>
+  </Section>
+
+  <Section background="surface">
+    <h2>Co služba zahrnuje</h2>
+    <p>
+      Nasnímáme celou nemovitost a vytvoříme z ní interaktivní 3D model, ve kterém se zájemce může sám
+      pohybovat mezi místnostmi stejně, jako by v nemovitosti skutečně stál.
+    </p>
+    <h2>Pro koho je služba vhodná</h2>
+    <p>
+      Pro makléře, kteří chtějí ušetřit čas sobě i zájemcům a omezit osobní prohlídky na vážné zájemce,
+      kteří už nemovitost virtuálně viděli.
+    </p>
+    <p>
+      <a href="https://my.matterport.com/show/?m=Z5jFLC6EnK6" target="_blank" rel="noopener noreferrer">
+        Prohlédnout ukázkovou 3D prohlídku
+      </a>
+    </p>
+  </Section>
+
+  <Section>
+    <h2>Ukázka</h2>
+    <PlaceholderImage ratio="16 / 9" label="Náhled Matterport skenu doplníme ve Fázi 4" />
+  </Section>
+
+  <Section background="surface">
+    <h2>Cena</h2>
+    <div class="grid grid--pricing">
+      <PricingTable nazev={cenik.matterport.nazev} polozky={cenik.matterport.polozky} />
+    </div>
+    <p class="section__note">Kompletní přehled najdete v <a href="/cenik/">ceníku</a>.</p>
+  </Section>
+
+  <Section>
+    <h2>Časté dotazy</h2>
+    <FaqAccordion items={faqStranky} />
+  </Section>
+
+  <Section background="dark">
+    <div class="cta">
+      <h2>Chcete nabídnout zájemcům virtuální prohlídku?</h2>
+      <Button href="/kontakt/" variant="primary">Nezávazná poptávka</Button>
+    </div>
   </Section>
 </Layout>
+
+<style>
+  .lead {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 42rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .grid--pricing {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    align-items: start;
+  }
+
+  .section__note {
+    margin-top: var(--space-md);
+    color: var(--color-text-muted);
+  }
+
+  .cta {
+    text-align: center;
+  }
+
+  .cta h2 {
+    margin-bottom: var(--space-md);
+  }
+</style>

@@ -29,7 +29,7 @@ const videa = [
   { id: 'KGVywRlp-iw', title: 'Videoprohlídka nemovitosti' },
 ];
 
-const faqHome = faq.slice(0, 6);
+const faqHome = faq.filter((item) => item.kategorie.includes('domov')).slice(0, 6);
 const portfolioNahled = [
   'Půdorys',
   'Vizualizace',

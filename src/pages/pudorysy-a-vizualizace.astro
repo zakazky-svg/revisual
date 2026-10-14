@@ -1,14 +1,109 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
+import Button from '../components/Button.astro';
+import PlaceholderImage from '../components/PlaceholderImage.astro';
+import PricingTable from '../components/PricingTable.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import cenik from '../content/cenik.json';
+import faq from '../content/faq.json';
+
+const virtualStaging = cenik.videoAFoceni.polozky.filter((p) => p.nazev === 'Virtual staging');
+const faqStranky = faq.filter((item) => item.kategorie.includes('pudorysy-a-vizualizace'));
+
+const ukazky = ['2D půdorys', '3D půdorys', 'Vizualizace', 'Virtual staging', 'Exteriér'];
 ---
 
 <Layout
-  title="Půdorysy a vizualizace nemovitostí – Ostrava, Praha, celá ČR"
-  description="2D a 3D půdorysy, vizualizace a virtual staging nemovitostí pro realitní makléře. [DOPLNIT finální text]"
+  title="Půdorysy a vizualizace nemovitostí – Ostrava, Praha, ČR"
+  description="2D a 3D půdorysy, fotorealistické vizualizace a virtual staging pro realitní makléře. Rychle, profesionálně, s jasným ceníkem."
 >
   <Section>
-    <h1>Půdorysy a vizualizace</h1>
-    <p>Obsah doplníme ve Fázi 3 podle ZADANI.md a OBSAH.md.</p>
+    <h1>Půdorysy a vizualizace nemovitostí – Ostrava, Praha a celá ČR</h1>
+    <p class="lead">
+      Připravíme přehledné 2D a 3D půdorysy, fotorealistické vizualizace i virtual staging, díky kterým
+      zájemci pochopí dispozici a potenciál nemovitosti ještě před prohlídkou.
+    </p>
+    <Button href="/kontakt/" variant="primary">Nezávazná poptávka</Button>
+  </Section>
+
+  <Section background="surface">
+    <h2>Co služba zahrnuje</h2>
+    <p>
+      Nevybavený i vybavený půdorys s názvy místností a výměrami, 3D podobu dispozice, fotorealistickou
+      vizualizaci celé nemovitosti nebo jen vybraných místností a virtual staging – dovybavení prázdných
+      prostor nábytkem ve vizualizaci. Zpracujeme i vizualizace exteriérů a okolí nemovitosti.
+    </p>
+    <h2>Pro koho je služba vhodná</h2>
+    <p>
+      Pro realitní makléře a kanceláře, kteří chtějí nabídku prezentovat přehledně a profesionálně už
+      v inzerátu – ať jde o prázdný byt, rozestavěný dům nebo nemovitost bez nábytku.
+    </p>
+  </Section>
+
+  <Section>
+    <h2>Ukázky</h2>
+    <div class="grid grid--ukazky">
+      {ukazky.map((label) => (
+        <PlaceholderImage ratio="4 / 3" label={label} />
+      ))}
+    </div>
+  </Section>
+
+  <Section background="surface">
+    <h2>Cena</h2>
+    <div class="grid grid--pricing">
+      <PricingTable nazev={cenik.pudorysyAVizualizace.nazev} polozky={cenik.pudorysyAVizualizace.polozky} />
+      <PricingTable nazev="Virtual staging" polozky={virtualStaging} />
+    </div>
+    <p class="section__note">Kompletní přehled najdete v <a href="/cenik/">ceníku</a>.</p>
+  </Section>
+
+  <Section>
+    <h2>Časté dotazy</h2>
+    <FaqAccordion items={faqStranky} />
+  </Section>
+
+  <Section background="dark">
+    <div class="cta">
+      <h2>Potřebujete půdorys nebo vizualizaci?</h2>
+      <Button href="/kontakt/" variant="primary">Nezávazná poptávka</Button>
+    </div>
   </Section>
 </Layout>
+
+<style>
+  .lead {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 42rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .grid--ukazky {
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  }
+
+  .grid--pricing {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    align-items: start;
+  }
+
+  .section__note {
+    margin-top: var(--space-md);
+    color: var(--color-text-muted);
+  }
+
+  .cta {
+    text-align: center;
+  }
+
+  .cta h2 {
+    margin-bottom: var(--space-md);
+  }
+</style>

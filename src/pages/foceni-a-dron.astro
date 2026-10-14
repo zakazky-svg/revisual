@@ -1,14 +1,109 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
+import Button from '../components/Button.astro';
+import PlaceholderImage from '../components/PlaceholderImage.astro';
+import PricingTable from '../components/PricingTable.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import cenik from '../content/cenik.json';
+import faq from '../content/faq.json';
+
+const foceniPolozky = cenik.videoAFoceni.polozky.filter((p) =>
+  ['Nafocení nemovitosti', 'Dron – foto + video'].includes(p.nazev)
+);
+const faqStranky = faq.filter((item) => item.kategorie.includes('foceni-a-dron'));
+
+const ukazky = ['Interiér', 'Exteriér', 'Dron'];
 ---
 
 <Layout
-  title="Focení nemovitostí a dron – Ostrava, Praha, celá ČR"
-  description="Profesionální focení nemovitostí a dronové snímky pro realitní makléře. [DOPLNIT finální text]"
+  title="Focení nemovitostí a dron – Ostrava, Praha, ČR"
+  description="Profesionální focení nemovitostí a letecké záběry z dronu pro realitní makléře v Praze, Ostravě a celé ČR."
 >
   <Section>
-    <h1>Focení a dron</h1>
-    <p>Obsah doplníme ve Fázi 3 podle ZADANI.md a OBSAH.md.</p>
+    <h1>Focení nemovitostí a dron – Ostrava, Praha a celá ČR</h1>
+    <p class="lead">
+      Nafotíme nemovitost širokoúhlými snímky se správným světlem a korekcí perspektivy, volitelně
+      doplníme o letecké záběry z dronu.
+    </p>
+    <Button href="/kontakt/" variant="primary">Nezávazná poptávka</Button>
+  </Section>
+
+  <Section background="surface">
+    <h2>Co služba zahrnuje</h2>
+    <p>
+      Širokoúhlé snímky interiéru i exteriéru se správným světlem a korekcí perspektivy, aby prostor
+      působil vzdušně a realisticky. Samostatně nabízíme i foto a video z dronu.
+    </p>
+    <h2>Pro koho je služba vhodná</h2>
+    <p>
+      Pro makléře, kteří chtějí mít k inzerátu kvalitní fotografie bez starostí s vlastním vybavením
+      nebo úpravami snímků.
+    </p>
+  </Section>
+
+  <Section>
+    <h2>Ukázky</h2>
+    <div class="grid grid--ukazky">
+      {ukazky.map((label) => (
+        <PlaceholderImage ratio="4 / 3" label={label} />
+      ))}
+    </div>
+  </Section>
+
+  <Section background="surface">
+    <h2>Cena</h2>
+    <div class="grid grid--pricing">
+      <PricingTable nazev="Focení a dron" polozky={foceniPolozky} />
+    </div>
+    <p class="section__note">Kompletní přehled najdete v <a href="/cenik/">ceníku</a>.</p>
+  </Section>
+
+  <Section>
+    <h2>Časté dotazy</h2>
+    <FaqAccordion items={faqStranky} />
+  </Section>
+
+  <Section background="dark">
+    <div class="cta">
+      <h2>Potřebujete kvalitní fotografie nemovitosti?</h2>
+      <Button href="/kontakt/" variant="primary">Nezávazná poptávka</Button>
+    </div>
   </Section>
 </Layout>
+
+<style>
+  .lead {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 42rem;
+    margin-bottom: var(--space-md);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--space-md);
+  }
+
+  .grid--ukazky {
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  }
+
+  .grid--pricing {
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    align-items: start;
+  }
+
+  .section__note {
+    margin-top: var(--space-md);
+    color: var(--color-text-muted);
+  }
+
+  .cta {
+    text-align: center;
+  }
+
+  .cta h2 {
+    margin-bottom: var(--space-md);
+  }
+</style>

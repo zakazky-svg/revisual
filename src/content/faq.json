@@ -1,30 +1,87 @@
 [
   {
     "otazka": "Jak rychle dodáte půdorys?",
-    "odpoved": "[DOPLNIT běžnou lhůtu]. Expresní zpracování je možné [DOPLNIT podmínky a příplatek]."
+    "odpoved": "[DOPLNIT běžnou lhůtu]. Expresní zpracování je možné [DOPLNIT podmínky a příplatek].",
+    "kategorie": ["domov", "pudorysy-a-vizualizace"]
   },
   {
     "otazka": "Jaké podklady potřebujete k půdorysu?",
-    "odpoved": "[DOPLNIT, např. zaměření, náčrt, fotky]"
+    "odpoved": "[DOPLNIT, např. zaměření, náčrt, fotky]",
+    "kategorie": ["domov", "pudorysy-a-vizualizace"]
   },
   {
     "otazka": "Jaký je rozdíl mezi 2D a 3D půdorysem?",
-    "odpoved": "2D půdorys je přehledný plán s názvy místností a výměrami. 3D půdorys navíc ukazuje vybavení a rozložení prostoru."
+    "odpoved": "2D půdorys je přehledný plán s názvy místností a výměrami. 3D půdorys navíc ukazuje vybavení a rozložení prostoru.",
+    "kategorie": ["domov", "pudorysy-a-vizualizace"]
+  },
+  {
+    "otazka": "Kolik stojí vizualizace nebo virtual staging?",
+    "odpoved": "Cena se odvíjí od rozsahu, přehled najdete v tabulce cen výše nebo v kompletním ceníku.",
+    "kategorie": ["pudorysy-a-vizualizace"]
   },
   {
     "otazka": "Co je Matterport a k čemu je dobrý?",
-    "odpoved": "Matterport je 3D sken nemovitosti, po kterém se zájemce může virtuálně procházet z domova."
+    "odpoved": "Matterport je 3D sken nemovitosti, po kterém se zájemce může virtuálně procházet z domova.",
+    "kategorie": ["domov", "matterport"]
+  },
+  {
+    "otazka": "Jak dlouho trvá skenování nemovitosti Matterportem?",
+    "odpoved": "[DOPLNIT]",
+    "kategorie": ["matterport"]
+  },
+  {
+    "otazka": "Kolik stojí Matterport sken?",
+    "odpoved": "Cena se odvíjí od velikosti nemovitosti, viz tabulka cen výše.",
+    "kategorie": ["matterport"]
+  },
+  {
+    "otazka": "Musím být při skenování přítomen?",
+    "odpoved": "[DOPLNIT]",
+    "kategorie": ["matterport"]
+  },
+  {
+    "otazka": "Jaký je rozdíl mezi variantami videoprohlídky?",
+    "odpoved": "Nabízíme tři varianty: bez mluveného slova, s mluveným slovem v pozadí a mluvené s výstupem. Liší se přítomností komentáře, podrobnosti rádi probereme při poptávce.",
+    "kategorie": ["videoprohlidky"]
+  },
+  {
+    "otazka": "Jak dlouho trvá natočení videoprohlídky?",
+    "odpoved": "[DOPLNIT]",
+    "kategorie": ["videoprohlidky"]
+  },
+  {
+    "otazka": "Můžete k videoprohlídce natočit i záběry z dronu?",
+    "odpoved": "Ano, dron focení a video nabízíme samostatně – viz stránka Focení a dron.",
+    "kategorie": ["videoprohlidky"]
+  },
+  {
+    "otazka": "Co focení nemovitosti zahrnuje?",
+    "odpoved": "Širokoúhlé snímky se správným světlem a korekcí perspektivy, aby prostor působil vzdušně a realisticky.",
+    "kategorie": ["foceni-a-dron"]
+  },
+  {
+    "otazka": "Nabízíte i snímky nebo video z dronu?",
+    "odpoved": "Ano, dron nabízíme zvlášť pro foto i video – viz ceník výše.",
+    "kategorie": ["foceni-a-dron"]
+  },
+  {
+    "otazka": "Jak dlouho trvá focení nemovitosti?",
+    "odpoved": "[DOPLNIT]",
+    "kategorie": ["foceni-a-dron"]
   },
   {
     "otazka": "Kde působíte?",
-    "odpoved": "Působíme v Praze a v Ostravě, služby zajišťujeme pro celou ČR. [DOPLNIT podmínky dojezdu u focení a videa]"
+    "odpoved": "Působíme v Praze a v Ostravě, služby zajišťujeme pro celou ČR. [DOPLNIT podmínky dojezdu u focení a videa]",
+    "kategorie": ["domov", "foceni-a-dron"]
   },
   {
     "otazka": "Jak probíhá objednávka a platba?",
-    "odpoved": "[DOPLNIT]"
+    "odpoved": "[DOPLNIT]",
+    "kategorie": ["domov"]
   },
   {
     "otazka": "Zvládnete i zakázku mimo Ostravu a Prahu?",
-    "odpoved": "[DOPLNIT]"
+    "odpoved": "[DOPLNIT]",
+    "kategorie": ["domov"]
   }
 ]
