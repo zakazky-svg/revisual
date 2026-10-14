@@ -1,6 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
+
+const WEB3FORMS_ACCESS_KEY = '[DOPLNIT]';
+
+const sluzby = [
+  { value: 'pudorys', label: 'Půdorys' },
+  { value: 'vizualizace', label: 'Vizualizace' },
+  { value: 'matterport', label: 'Matterport' },
+  { value: 'videoprohlidka', label: 'Videoprohlídka' },
+  { value: 'foceni', label: 'Focení' },
+  { value: 'dron', label: 'Dron' },
+  { value: 'jine', label: 'Jiné' },
+];
 ---
 
 <Layout
@@ -9,6 +21,308 @@ import Section from '../components/Section.astro';
 >
   <Section>
     <h1>Kontakt a poptávka</h1>
-    <p>Poptávkový formulář doplníme ve Fázi 5 (čeká se na klíč formulářové služby).</p>
+    <p class="lead">
+      Napište nám, na co potřebujete připravit podklady, a ozveme se s nabídkou. Poptávka k ničemu
+      nezavazuje.
+    </p>
+
+    <div class="layout">
+      <form id="poptavka-form" class="form">
+        <input type="hidden" name="access_key" value={WEB3FORMS_ACCESS_KEY} />
+        <input type="hidden" name="subject" value="Nová poptávka z webu Revisual" />
+        <input
+          type="text"
+          name="_honeypot"
+          class="visually-hidden"
+          tabindex="-1"
+          autocomplete="off"
+          aria-hidden="true"
+        />
+
+        <div class="field">
+          <label for="jmeno">Jméno a příjmení *</label>
+          <input id="jmeno" name="jmeno" type="text" required />
+        </div>
+
+        <div class="field">
+          <label for="firma">Kancelář / firma</label>
+          <input id="firma" name="firma" type="text" />
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="email">E-mail *</label>
+            <input id="email" name="email" type="email" required />
+          </div>
+          <div class="field">
+            <label for="telefon">Telefon *</label>
+            <input id="telefon" name="telefon" type="tel" required />
+          </div>
+        </div>
+
+        <fieldset class="field">
+          <legend>Mám zájem o *</legend>
+          <div class="checkbox-grid">
+            {sluzby.map((s) => (
+              <label class="checkbox">
+                <input type="checkbox" name="sluzba" value={s.value} />
+                {s.label}
+              </label>
+            ))}
+          </div>
+          <p class="field-error" id="sluzba-error" hidden>Vyberte prosím alespoň jednu službu.</p>
+        </fieldset>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="lokalita">Lokalita nemovitosti *</label>
+            <input id="lokalita" name="lokalita" type="text" placeholder="Např. Praha 5" required />
+          </div>
+          <div class="field">
+            <label for="plocha">Přibližná plocha (m²) *</label>
+            <input id="plocha" name="plocha" type="number" min="0" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="termin">Požadovaný termín *</label>
+          <input id="termin" name="termin" type="text" placeholder="Např. do 14 dnů" required />
+        </div>
+
+        <div class="field">
+          <label for="zprava">Zpráva</label>
+          <textarea id="zprava" name="zprava" rows="4"></textarea>
+        </div>
+
+        <label class="checkbox">
+          <input type="checkbox" name="souhlas" required />
+          Souhlasím se zpracováním osobních údajů podle
+          <a href="/ochrana-osobnich-udaju/">zásad ochrany osobních údajů</a>. *
+        </label>
+
+        <button type="submit" class="btn btn--primary" id="submit-btn">Odeslat poptávku</button>
+
+        <p class="form-status form-status--success" id="form-success" role="status" hidden>
+          Děkujeme, poptávku jsme přijali. Ozveme se vám co nejdříve.
+        </p>
+        <p class="form-status form-status--error" id="form-error" role="alert" hidden>
+          Poptávku se nepodařilo odeslat. Zkuste to prosím znovu nebo nám napište na
+          <a href="mailto:zakazky@revisual.cz">zakazky@revisual.cz</a>.
+        </p>
+      </form>
+
+      <aside class="sidebar">
+        <h2>Kontaktní údaje</h2>
+        <ul>
+          <li><a href="tel:+420732860641">Alexandr Skýba: +420 732 860 641</a></li>
+          <li><a href="tel:+420737692051">Daniel Kresila: +420 737 692 051</a></li>
+          <li><a href="mailto:zakazky@revisual.cz">zakazky@revisual.cz</a></li>
+          <li><a href="https://www.instagram.com/revisual.cz/" target="_blank" rel="noopener noreferrer">Instagram @revisual.cz</a></li>
+          <li><a href="https://g.page/r/Ccjq-IfmJGKGEAE/review" target="_blank" rel="noopener noreferrer">Google recenze</a></li>
+        </ul>
+        <p class="sidebar__ico">IČO: 17632871</p>
+      </aside>
+    </div>
   </Section>
 </Layout>
+
+<style>
+  .lead {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 42rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .layout {
+    display: grid;
+    gap: var(--space-xl);
+    grid-template-columns: 1fr;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .field-row {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: 1fr;
+  }
+
+  label,
+  legend {
+    font-weight: 600;
+    font-size: var(--fs-small);
+  }
+
+  input[type='text'],
+  input[type='email'],
+  input[type='tel'],
+  input[type='number'],
+  textarea {
+    font: inherit;
+    padding: 0.625rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid var(--color-text);
+    outline-offset: 1px;
+  }
+
+  .checkbox-grid {
+    display: grid;
+    gap: var(--space-xs) var(--space-md);
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  }
+
+  .checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-xs);
+    font-weight: 400;
+  }
+
+  .checkbox input {
+    margin-top: 0.2rem;
+  }
+
+  .field-error {
+    color: #b42318;
+    font-size: var(--fs-small);
+    margin: var(--space-xs) 0 0;
+  }
+
+  .btn {
+    align-self: flex-start;
+  }
+
+  .form-status {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
+  }
+
+  .form-status--success {
+    background: #e6f4ea;
+    color: #1e4620;
+  }
+
+  .form-status--error {
+    background: #fdecea;
+    color: #611a15;
+  }
+
+  .sidebar h2 {
+    font-size: var(--fs-small);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+  }
+
+  .sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .sidebar a {
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .sidebar a:hover {
+    text-decoration: underline;
+  }
+
+  .sidebar__ico {
+    margin-top: var(--space-md);
+    color: var(--color-text-muted);
+    font-size: var(--fs-small);
+  }
+
+  @media (min-width: 36rem) {
+    .field-row {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .layout {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('poptavka-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+  const successEl = document.getElementById('form-success');
+  const errorEl = document.getElementById('form-error');
+  const sluzbaError = document.getElementById('sluzba-error');
+
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!form || !submitBtn) return;
+
+    const honeypot = form.querySelector<HTMLInputElement>('[name="_honeypot"]');
+    if (honeypot?.value) return;
+
+    const sluzbyChecked = form.querySelectorAll<HTMLInputElement>('input[name="sluzba"]:checked');
+    if (sluzbyChecked.length === 0) {
+      if (sluzbaError) sluzbaError.hidden = false;
+      return;
+    }
+    if (sluzbaError) sluzbaError.hidden = true;
+
+    errorEl?.setAttribute('hidden', '');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Odesílám…';
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      });
+      const data = await response.json();
+
+      if (data.success) {
+        form.hidden = true;
+        successEl?.removeAttribute('hidden');
+
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        (window as any).dataLayer.push({ event: 'generate_lead' });
+        if (typeof (window as any).fbq === 'function') {
+          (window as any).fbq('track', 'Lead');
+        }
+      } else {
+        errorEl?.removeAttribute('hidden');
+      }
+    } catch {
+      errorEl?.removeAttribute('hidden');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Odeslat poptávku';
+    }
+  });
+</script>

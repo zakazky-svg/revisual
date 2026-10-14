@@ -1,6 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Section from '../components/Section.astro';
+import Button from '../components/Button.astro';
+import PricingTable from '../components/PricingTable.astro';
+import cenik from '../content/cenik.json';
 ---
 
 <Layout
@@ -9,6 +12,52 @@ import Section from '../components/Section.astro';
 >
   <Section>
     <h1>Ceník</h1>
-    <p>Tabulky z cenik.json doplníme ve Fázi 5.</p>
+    <p class="lead">
+      Veřejný ceník bez skrytých poplatků. Pro výpočet přesné ceny nás kontaktujte s informací
+      o velikosti a typu nemovitosti.
+    </p>
+
+    <div class="grid">
+      <PricingTable nazev={cenik.pudorysyAVizualizace.nazev} polozky={cenik.pudorysyAVizualizace.polozky} />
+      <PricingTable nazev={cenik.matterport.nazev} polozky={cenik.matterport.polozky} />
+      <PricingTable nazev={cenik.videoAFoceni.nazev} polozky={cenik.videoAFoceni.polozky} />
+    </div>
+
+    <p class="section__note">
+      Expresní zpracování je možné – [DOPLNIT podmínky a příplatek za expresní zpracování].
+    </p>
+
+    <div class="cta">
+      <Button href="/kontakt/" variant="primary">Nezávazná poptávka</Button>
+    </div>
   </Section>
 </Layout>
+
+<style>
+  .lead {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    max-width: 42rem;
+    margin-bottom: var(--space-lg);
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--space-md);
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    align-items: start;
+  }
+
+  .section__note {
+    margin-top: var(--space-lg);
+    padding: var(--space-md);
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    color: var(--color-text-muted);
+  }
+
+  .cta {
+    margin-top: var(--space-lg);
+    text-align: center;
+  }
+</style>

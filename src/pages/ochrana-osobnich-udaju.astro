@@ -9,6 +9,82 @@ import Section from '../components/Section.astro';
 >
   <Section>
     <h1>Ochrana osobních údajů</h1>
-    <p>Text doplníme ve Fázi 5.</p>
+    <p class="note">
+      Toto je pracovní verze textu – před spuštěním webu doporučujeme nechat ji zkontrolovat
+      právníkem.
+    </p>
+
+    <h2>Správce osobních údajů</h2>
+    <p>
+      Správcem osobních údajů je Revisual, IČO 17632871 (dále jen „my" nebo „Revisual"). V případě
+      dotazů k ochraně osobních údajů nás kontaktujte na <a href="mailto:zakazky@revisual.cz">zakazky@revisual.cz</a>.
+    </p>
+
+    <h2>Jaké údaje zpracováváme</h2>
+    <p>Když nám napíšete přes poptávkový formulář, zpracováváme:</p>
+    <ul>
+      <li>jméno a příjmení, případně název kanceláře nebo firmy,</li>
+      <li>e-mail a telefon,</li>
+      <li>lokalitu a přibližnou plochu nemovitosti, požadovaný termín,</li>
+      <li>obsah vaší zprávy, pokud nám nějakou napíšete.</li>
+    </ul>
+    <p>
+      Pokud v cookie liště povolíte analytické a marketingové cookies, zpracováváme také údaje
+      o návštěvnosti webu přes Google Tag Manager a Meta Pixel. Podrobnosti a možnost souhlas
+      kdykoliv změnit najdete v nastavení cookies v patičce webu.
+    </p>
+
+    <h2>Proč údaje zpracováváme</h2>
+    <p>
+      Údaje z poptávkového formuláře zpracováváme, abychom mohli reagovat na váš dotaz a připravit
+      nabídku (jednání o uzavření smlouvy na vaši žádost). Údaje o návštěvnosti zpracováváme na
+      základě vašeho souhlasu za účelem měření návštěvnosti webu a cílení reklamy.
+    </p>
+
+    <h2>Jak dlouho údaje uchováváme</h2>
+    <p>[DOPLNIT dobu uchování poptávek a kontaktních údajů]</p>
+
+    <h2>Komu údaje předáváme</h2>
+    <p>
+      Údaje z formuláře zpracovává poskytovatel formulářové služby, přes kterou poptávka na náš
+      e-mail dorazí. Údaje o návštěvnosti (po udělení souhlasu) zpracovává Google (Google Tag
+      Manager) a Meta (Meta Pixel). Údaje nepředáváme nikomu jinému, pokud nám to neuloží zákon.
+    </p>
+
+    <h2>Vaše práva</h2>
+    <p>Ve vztahu ke svým osobním údajům máte právo zejména:</p>
+    <ul>
+      <li>požadovat přístup ke svým osobním údajům,</li>
+      <li>požadovat opravu nepřesných údajů,</li>
+      <li>požadovat výmaz údajů,</li>
+      <li>vznést námitku proti zpracování,</li>
+      <li>požadovat přenesení údajů,</li>
+      <li>podat stížnost u Úřadu pro ochranu osobních údajů (uoou.cz).</li>
+    </ul>
+    <p>
+      Pro uplatnění těchto práv nás kontaktujte na <a href="mailto:zakazky@revisual.cz">zakazky@revisual.cz</a>.
+    </p>
   </Section>
 </Layout>
+
+<style>
+  h2 {
+    margin-top: var(--space-lg);
+  }
+
+  p,
+  li {
+    color: var(--color-text-muted);
+  }
+
+  ul {
+    padding-left: 1.25rem;
+  }
+
+  .note {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+    display: inline-block;
+  }
+</style>
