@@ -6,7 +6,7 @@ import LiteYoutube from '../components/LiteYoutube.astro';
 import portfolio from '../content/portfolio.json';
 
 const zdrojeObrazku = import.meta.glob<{ default: ImageMetadata }>(
-  '../../assets-src/**/*.{jpg,jpeg,png}',
+  '../assets/portfolio/**/*.{jpg,jpeg,png}',
   { eager: true }
 );
 
@@ -16,7 +16,7 @@ const obrazky = await Promise.all(
   portfolio
     .filter((item) => item.typ === 'obrazek')
     .map(async (item) => {
-      const klic = `../../assets-src/${item.soubor}`;
+      const klic = `../assets/portfolio/${item.soubor}`;
       const modul = zdrojeObrazku[klic];
       if (!modul) {
         throw new Error(`Obrázek z portfolio.json nenalezen: ${item.soubor}`);
