@@ -5,8 +5,18 @@ import Button from '../components/Button.astro';
 import PlaceholderImage from '../components/PlaceholderImage.astro';
 
 const tym = [
-  { jmeno: 'Alexandr Skýba', role: '[DOPLNIT role]', telefon: '+420 732 860 641' },
-  { jmeno: 'Daniel Kresila', role: '[DOPLNIT role]', telefon: '+420 737 692 051' },
+  {
+    jmeno: 'Alexandr Skýba',
+    role: 'Obchod, marketing a péče o klienty',
+    popis: 'S Alexandrem proberete svou zakázku, vyberete vhodné služby a domluvíte rozsah spolupráce.',
+    telefon: '+420 732 860 641',
+  },
+  {
+    jmeno: 'Daniel Kresila',
+    role: 'Grafika, půdorysy a 3D vizualizace',
+    popis: 'Daniel se věnuje grafickému zpracování, půdorysům a vizualizacím, které přehledně představí prostor a jeho možnosti.',
+    telefon: '+420 737 692 051',
+  },
 ];
 ---
 
@@ -17,14 +27,10 @@ const tym = [
   <Section>
     <h1>O nás</h1>
     <p class="lead">
-      Jsme Revisual, tým pro realitní makléře, který připravuje půdorysy, vizualizace, 3D prohlídky,
-      videa a fotografie nemovitostí. Působíme v Praze a v Ostravě a rádi pracujeme pro klienty
-      z celé republiky.
-    </p>
-    <p class="lead">
-      Nebojíme se výzev, naopak je máme rádi. Každá nová zakázka nás posouvá dál a nemáme problém
-      přizpůsobit se potřebám klienta, jeho termínům i způsobu práce. Naším cílem je, aby vaše
-      nemovitost vypadala nejlépe, jak je to možné, a prodávala se rychleji.
+      Pomáháme realitním makléřům, developerům i majitelům představit nemovitosti v tom nejlepším
+      světle. Pod jednou značkou zajišťujeme fotografie, videoprohlídky, půdorysy, vizualizace
+      i virtuální prohlídky Matterport. Ať potřebujete připravit jeden byt do nabídky, nebo
+      prezentaci celého developerského projektu, domluvíme rozsah podle konkrétní nemovitosti.
     </p>
   </Section>
 
@@ -36,6 +42,7 @@ const tym = [
           <PlaceholderImage ratio="1 / 1" label="Fotka doplníme" />
           <h3>{clovek.jmeno}</h3>
           <p class="person__role">{clovek.role}</p>
+          <p class="person__bio">{clovek.popis}</p>
           <p><a href={`tel:${clovek.telefon.replace(/\s/g, '')}`}>{clovek.telefon}</a></p>
         </div>
       ))}
@@ -76,6 +83,11 @@ const tym = [
   .person__role {
     color: var(--color-text-muted);
     margin-bottom: var(--space-xs);
+  }
+
+  .person__bio {
+    font-size: var(--fs-small);
+    margin-bottom: var(--space-sm);
   }
 
   .cta {

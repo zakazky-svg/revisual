@@ -1,12 +1,17 @@
 [
   {
     "otazka": "Jak rychle dodáte půdorys?",
-    "odpoved": "[DOPLNIT běžnou lhůtu]. Expresní zpracování je možné [DOPLNIT podmínky a příplatek].",
+    "odpoved": "Běžný půdorys zpracujeme obvykle do 24 hodin od dodání kompletních podkladů a potvrzení objednávky. U většího množství půdorysů nebo složitějších nemovitostí domluvíme termín individuálně.",
     "kategorie": ["domov", "pudorysy-a-vizualizace"]
   },
   {
+    "otazka": "Nabízíte expresní zpracování půdorysu?",
+    "odpoved": "Spěcháte na zveřejnění nabídky? Ozvěte se nám. Podle aktuální kapacity můžeme půdorys zpracovat přednostně, případně ještě tentýž pracovní den. Dostupnost, termín i případný příplatek vám potvrdíme předem.",
+    "kategorie": ["pudorysy-a-vizualizace"]
+  },
+  {
     "otazka": "Jaké podklady potřebujete k půdorysu?",
-    "odpoved": "[DOPLNIT, např. zaměření, náčrt, fotky]",
+    "odpoved": "Ideální je původní půdorys nebo čitelný ruční náčrt s rozměry místností a vyznačenými dveřmi, okny a schodištěm. Připojte fotografie jednotlivých místností, pokud je máte. U vybaveného půdorysu pomohou také s rozmístěním nábytku. Podklady mohou být v PDF, jako obrázek nebo fotografie náčrtu. Pokud si nejste jistí, pošlete nám, co máte – ověříme, zda to pro zpracování stačí.",
     "kategorie": ["domov", "pudorysy-a-vizualizace"]
   },
   {
@@ -26,7 +31,7 @@
   },
   {
     "otazka": "Jak dlouho trvá skenování nemovitosti Matterportem?",
-    "odpoved": "[DOPLNIT]",
+    "odpoved": "U běžného bytu počítejte přibližně s 30–60 minutami skenování, u rodinného domu obvykle s 60–120 minutami. Záleží na velikosti, členitosti a připravenosti prostoru. Čas upřesníme při objednávce – jde o orientační dobu práce na místě, ne o dobu dodání hotové prohlídky.",
     "kategorie": ["matterport"]
   },
   {
@@ -36,7 +41,7 @@
   },
   {
     "otazka": "Musím být při skenování přítomen?",
-    "odpoved": "[DOPLNIT]",
+    "odpoved": "Makléř ani majitel nemusí být po celou dobu přítomen, pokud se předem domluvíme na zpřístupnění nemovitosti a jejím předání. Během skenování je vhodné omezit pohyb osob a zvířat.",
     "kategorie": ["matterport"]
   },
   {
@@ -46,7 +51,7 @@
   },
   {
     "otazka": "Jak dlouho trvá natočení videoprohlídky?",
-    "odpoved": "[DOPLNIT]",
+    "odpoved": "Na videoprohlídku počítejte přibližně s 1–3 hodinami podle velikosti nemovitosti a rozsahu natáčení. Při kombinaci více služeb vám délku návštěvy upřesníme předem. Termín dodání hotového videa potvrdíme při objednávce.",
     "kategorie": ["videoprohlidky"]
   },
   {
@@ -66,22 +71,22 @@
   },
   {
     "otazka": "Jak dlouho trvá focení nemovitosti?",
-    "odpoved": "[DOPLNIT]",
+    "odpoved": "Focení běžného bytu zabere přibližně 45–90 minut, rodinného domu zpravidla 1–2 hodiny. Nemovitost doporučujeme připravit před naším příjezdem – uklidit, uvolnit hlavní plochy a odstranit osobní předměty, které nemají být v záběru. Termín dodání upravených fotografií potvrdíme při objednávce.",
     "kategorie": ["foceni-a-dron"]
   },
   {
     "otazka": "Kde působíte?",
-    "odpoved": "Působíme v Praze a v Ostravě, služby zajišťujeme pro celou ČR. [DOPLNIT podmínky dojezdu u focení a videa]",
+    "odpoved": "Půdorysy a vizualizace zpracováváme na dálku pro klienty z celé České republiky. Focení, videoprohlídky a Matterport zajišťujeme především na Ostravsku a v Praze. Zakázku v dalších lokalitách domluvíme podle rozsahu a dostupnosti. Případnou cenu dopravy vždy znáte předem.",
     "kategorie": ["domov", "foceni-a-dron"]
   },
   {
     "otazka": "Jak probíhá objednávka a platba?",
-    "odpoved": "[DOPLNIT]",
+    "odpoved": "Ozvěte se nám přes poptávkový formulář, e-mailem nebo telefonicky. Napište, o jakou nemovitost jde, kde se nachází, které služby potřebujete a jaký máte požadovaný termín. U půdorysů a vizualizací můžete rovnou poslat dostupné podklady. Následně potvrdíme rozsah, cenu a termín realizace. Platba probíhá na základě vystavené faktury, platební podmínky a případnou zálohu domluvíme před zahájením zakázky. Samotné odeslání poptávky vás k ničemu nezavazuje.",
     "kategorie": ["domov"]
   },
   {
     "otazka": "Zvládnete i zakázku mimo Ostravu a Prahu?",
-    "odpoved": "[DOPLNIT]",
+    "odpoved": "Ano, po domluvě. Půdorysy a vizualizace zpracováváme na dálku pro celou ČR, focení, videoprohlídky a Matterport mimo Ostravsko a Prahu domluvíme podle rozsahu a dostupnosti, včetně ceny dopravy předem.",
     "kategorie": ["domov"]
   }
 ]

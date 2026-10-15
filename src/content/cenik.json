@@ -6,7 +6,8 @@
       { "nazev": "Vybavený 2D + 3D půdorys s legendou", "cena": "650 Kč / patro" },
       { "nazev": "Karta bytu / vlastní styl legendy", "cena": "100 Kč / patro" },
       { "nazev": "Vizualizace celé nemovitosti", "cena": "2 900 Kč (každé další patro 1 500 Kč)" },
-      { "nazev": "Exteriéry", "cena": "Cena dle rozsahu práce" }
+      { "nazev": "Exteriéry", "cena": "Cena dle rozsahu práce" },
+      { "nazev": "Expresní zpracování", "cena": "Po domluvě, dle rozsahu a termínu" }
     ]
   },
   "matterport": {
